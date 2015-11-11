@@ -1,2 +1,17 @@
-html, body { margin: 0; overflow: hidden; }
-img { display: block; float: left; width: 20%; height: 25vh; object-fit: cover; }	
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 100px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 30px;
+  font-size: 0;
+  background: #e6e6e6;
+}
+img {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
+  border: 10px solid #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
