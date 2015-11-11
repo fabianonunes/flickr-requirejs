@@ -1,4 +1,4 @@
-define(['q', 'jsonp'], function (q, jsonp) {
+define(['jsonp'], function (jsonp) {
 
   return {
 
@@ -13,16 +13,17 @@ define(['q', 'jsonp'], function (q, jsonp) {
     },
 
     _dispatch : function (url, data) {
-      var dfd = q.defer()
-      jsonp({
-        url: url,
-        data: data,
-        callbackName: 'jsoncallback',
-        success: dfd.resolve.bind(dfd),
-        error: dfd.reject.bind(dfd)
+      return new Promise(function (resolve, reject) {
+        jsonp({
+          url: url,
+          data: data,
+          callbackName: 'jsoncallback',
+          success: resolve,
+          error: reject
+        })
       })
-      return dfd.promise
     }
 
   }
+
 })
