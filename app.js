@@ -1,9 +1,13 @@
-require(['jquery', './flickrApi'], function ($, flickr) {
+require(['jquery', './flickrApi', 'q'], function ($, flickr, q) {
 
-  flickr
-    .photosPublic('49143546@N06')
+  q.all([
+    flickr.photosPublic('49143546@N06'),
+    flickr.photosFriends('49143546@N06')
+  ])
     .then(function (data) {
-      return data.items.sort(function () {
+      var _public = data[0], friends = data[1]
+      var items = _public.items.concat(friends.items)
+      return items.sort(function () {
         return Math.random() > Math.random()
       })
     })
@@ -16,5 +20,6 @@ require(['jquery', './flickrApi'], function ($, flickr) {
       $('body').html(html)
 
     })
+    .done()
 
 })
