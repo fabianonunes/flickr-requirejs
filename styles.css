@@ -1,0 +1,2 @@
+html, body { margin: 0; overflow: hidden; }
+img { display: block; float: left; width: 20%; height: 25vh; object-fit: cover; }	
